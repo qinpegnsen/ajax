@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <!-- 
+        表单的提交方式 表单提交会有历史记录  清除历史记录 autocomplete="off"
+        form Data  如果在浏览器看不到 请求，把过滤打开选择all 或者是选择DOC,form 属于doucument 的文档请求
+        默认提交的形式是 Content-Type: application/x-www-form-urlencoded
+        呈现出来的是formdata （key和value的形式）
+        
+     -->
+    <form action="http://api2.zolerp.cn/api/User/Login" method="post">
+        <input type="text" name="name" autocomplete="off">
+        <input type="text" name="age1">
+        <button type="submit">提交</button>
+    </form>
+    <input type="text" name="age1">
+    <input type="text" name="age11">
+    <div>发送</div>
+
+</body>
+<script>
+    
+
+
+    
+
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="age1">
+    <input type="text" name="age11">
+    <div>发送</div>
+
+</body>
+<script>
+    var div = document.querySelector('div')
+    var ajax=window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+
+    /* 
+       application/x-www-form-urlencoded
+     HTTP会将请求参数用key1=val1&key2=val2的方式进行组织，并放到请求实体里面，注意如果是中文或特殊字符如"/"、","、“:" 等会自动进行URL转码。不支持文件，一般用于表单提交。
+    
+     */
+    div.onclick = function () {
+        /* 
+            get 方式 必须用&连接，因为浏览器认识这个，会在 开发工具中 看传递的参数会分开     
+            默认请求方式   application/x-www-form-urlencoded 这总方式必须的以这样的方式来组织数据 key1=val1&key2=val2
+        */
+
+        // ajax.open('get', '/localhost?age=141&name=1')
+        // ajax.send()
+
+
+        // post    默认请求方式  text/plain
+        ajax.open('post', 'http://api2.zolerp.cn/api/User/Login') 
+        //  application/x-www-form-urlencoded 这总方式必须的以这样的方式来组织数据 key1=val1&key2=val2
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  
+
+        /* 
+            在开发者工具中显示为Form Data view source 点击view source可以看到变成了age=141&name=1 这种形式
+        
+        */
+        ajax.send('age=141&name=1')
+
+
+    }
+
+
+
+    
+
+</script>
+
+</html>

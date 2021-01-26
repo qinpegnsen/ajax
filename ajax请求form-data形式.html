@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" >
+    <div>发送</div>
+
+</body>
+<script>
+    var div = document.querySelector('input')
+    var ajax=window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+
+   
+    div.onchange = function (e) {
+       console.log('e',e);
+       var file=e.target.files[0];
+       console.log('file',file);
+       
+       var reader=new FileReader();
+       var aa=reader.readAsDataURL(file);
+       reader.onload=function(v){
+           console.log('v.target.restl',v.target.result);
+       }
+
+       var formData = new FormData(); // 当前为空
+       formData.append('username', 'Chris');
+       formData.append('file', 'file');
+
+       /* 
+        如果用multipart/form-data 在开发者工具中显示为 Request Payload 下面是一堆的二进制文件 通常用于上传文件
+
+       */
+        ajax.open('post', 'http://api2.zolerp.cn/api/User/Login') 
+        ajax.setRequestHeader("Content-Type","multipart/form-data");  
+        ajax.send(formData)
+
+
+    }
+
+
+
+    
+
+</script>
+
+</html>

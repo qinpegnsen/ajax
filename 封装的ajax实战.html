@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="age1">
+    <input type="text" name="age11">
+    <div>发送</div>
+
+</body>
+<script src="./ajax封装.js"></script>
+<script>
+    var div = document.querySelector('div')
+  
+
+   let  me=this;
+    div.onclick = function () {
+    
+        ajax({
+            url:'http://api2.zolerp.cn/api/User/Login',
+            method:"post",
+            /* 
+             想要啥格式就啥格式
+                字符串
+                对象
+                xml
+            */
+            // dataType:'json',//默认就是
+            // dataType:'text',
+            data:{userName:'qps',userPwd:'abc111'},
+            success:function(data){
+                console.log('data',data);
+                
+            }
+        })
+
+
+    }
+
+    let obj={name:'qps',age:'123'};
+    console.log(Object.keys())
+    console.log(obj.values())
+
+
+    
+    
+
+</script>
+
+</html>

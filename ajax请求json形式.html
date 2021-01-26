@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>发送</div>
+
+</body>
+<script>
+    var div = document.querySelector('div')
+    var ajax = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+
+    /* 
+        如果设置Header的ContentType为 application/json，它会发两次请求，第一次先发Method为OPTIONS的请求到服务器，
+        如果通过发送第2次请求
+    
+     */
+    div.onclick = function () {
+
+        let obj = {
+            obj1: [
+                {
+                    "name": 111,
+                    "password": 22
+                }
+            ]
+        }
+        ajax.open('post', 'http://adminapi2.zolerp.cn/api/dologin')
+        ajax.setRequestHeader("Content-Type", "application/json");
+        ajax.send(JSON.stringify(obj))
+
+        /* 
+            在 开发者工具中 是显示  Request Payload  view source  点击view source变成了view parsed ;可以看到是json字符串
+        */
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4) {
+                if (ajax.status == 200) {
+
+                } else if (ajax.status == 404) {
+                    alert("页面未找到");
+                } else {
+                    alert("获取错误");
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+</script>
+
+</html>
